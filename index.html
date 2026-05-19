@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maison Lumière — The Art of the Exceptional</title>
+  <meta name="description" content="Objects of desire born from the union of ancestral craft and contemporary vision. Discover the Maison Lumière collection.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Cormorant', 'Georgia', 'serif'],
+            sans:  ['Montserrat', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            page:       '#F8F4EE',
+            charcoal:   '#1C1917',
+            warm:       '#44403C',
+            gold:       '#D4A853',
+            'gold-text':'#7A5500',
+            'gold-light':'#F0D080',
+            'gold-dim': '#8B6914',
+            ivory:      '#FAF8F5',
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --gold: #D4A853;
+      --gold-text: #7A5500;
+      --page-bg: #F8F4EE;
+      --text-primary: #1C1917;
+      --glass-bg:          rgba(255,255,255,0.70);
+      --glass-border:      rgba(28,25,23,0.10);
+      --glass-gold-bg:     rgba(212,168,83,0.08);
+      --glass-gold-border: rgba(122,85,0,0.22);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      background-color: var(--page-bg);
+      color: var(--text-primary);
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── Glass variants ───────────────────────────────────── */
+    .glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 2px 24px rgba(28,25,23,0.07);
+    }
+    .glass-gold {
+      background: var(--glass-gold-bg);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border: 1px solid var(--glass-gold-border);
+      box-shadow: 0 2px 20px rgba(122,85,0,0.06);
+    }
+    /* dark glass used only inside the dark membership section */
+    .glass-dark {
+      background: rgba(10,9,6,0.55);
+      backdrop-filter: blur(20px) saturate(150%);
+      -webkit-backdrop-filter: blur(20px) saturate(150%);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* ── Shimmer text ─────────────────────────────────────── */
+    .shimmer-text {
+      background: linear-gradient(90deg,
+        #8B6914 0%, #D4A853 20%, #B8860B 40%,
+        #D4A853 60%, #8B6914 80%, #D4A853 100%
+      );
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s linear infinite;
+    }
+
+    /* ── Keyframes ────────────────────────────────────────── */
+    @keyframes shimmer {
+      from { background-position: 0% 50%; }
+      to   { background-position: 200% 50%; }
+    }
+    @keyframes orbFloat1 {
+      0%,100% { transform: translate(0,0)       scale(1);   }
+      33%     { transform: translate(80px,-60px)  scale(1.08); }
+      66%     { transform: translate(-40px,40px)  scale(0.92); }
+    }
+    @keyframes orbFloat2 {
+      0%,100% { transform: translate(0,0)       scale(1);   }
+      50%     { transform: translate(-90px,70px) scale(1.12); }
+    }
+    @keyframes orbFloat3 {
+      0%,100% { transform: translate(0,0)       scale(1);   }
+      40%     { transform: translate(50px,-70px) scale(0.88); }
+      80%     { transform: translate(-70px,20px) scale(1.08); }
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @keyframes rotateSlow {
+      from { transform: translate(-50%,-50%) rotate(0deg); }
+      to   { transform: translate(-50%,-50%) rotate(360deg); }
+    }
+
+    /* ── Floating orbs (warm amber for light bg) ─────────── */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+    .orb-gold  { background: radial-gradient(circle, #E8C46A, #C49B2A); opacity: 0.22; }
+    .orb-warm  { background: radial-gradient(circle, #E8A060, #C07040); opacity: 0.12; }
+    .orb-sand  { background: radial-gradient(circle, #E8D8B0, #D4C080); opacity: 0.18; }
+
+    /* ── Product card hover ───────────────────────────────── */
+    .product-card {
+      transition: transform 0.45s cubic-bezier(0.22,1,0.36,1),
+                  box-shadow 0.45s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-10px) scale(1.01);
+      box-shadow: 0 32px 64px rgba(28,25,23,0.14), 0 0 40px rgba(212,168,83,0.1);
+    }
+
+    /* ── Gold divider line ───────────────────────────────── */
+    .gold-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #D4A853, transparent);
+    }
+
+    /* ── Marquee ─────────────────────────────────────────── */
+    .marquee-wrap { overflow: hidden; }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 38s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+
+    /* ── Scroll reveal ───────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.85s ease, transform 0.85s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Section padding ─────────────────────────────────── */
+    .section-pad { padding-top: 7rem; padding-bottom: 7rem; }
+    @media (max-width: 768px) {
+      .section-pad { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+    }
+
+    /* ── Membership gradient border (stays dark) ─────────── */
+    .membership-card {
+      background: linear-gradient(135deg, #0D0B07, #1A1510) padding-box,
+                  linear-gradient(135deg, rgba(212,168,83,0.8), rgba(240,208,128,0.6),
+                    rgba(139,105,20,0.5), rgba(212,168,83,0.8)) border-box;
+      border: 1px solid transparent;
+      border-radius: 1rem;
+    }
+
+    /* ── Step number watermark ───────────────────────────── */
+    .step-num {
+      font-family: 'Cormorant', serif;
+      font-size: 5.5rem;
+      font-weight: 300;
+      line-height: 1;
+      color: rgba(212,168,83,0.14);
+      position: absolute;
+      top: -1.5rem;
+      left: -0.25rem;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* ── CSS product mockups (warm light palettes) ───────── */
+    .mock-perfume {
+      background: linear-gradient(155deg, #EAD9B8 0%, #DEC89A 50%, #D0BA80 100%);
+      position: relative; overflow: hidden;
+    }
+    .mock-perfume::before {
+      content: '';
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -54%);
+      width: 52px; height: 148px;
+      background: linear-gradient(180deg,
+        rgba(184,134,11,0.65) 0%,
+        rgba(184,134,11,0.30) 55%,
+        rgba(184,134,11,0.55) 100%);
+      border-radius: 26px 26px 6px 6px;
+      border: 1px solid rgba(122,85,0,0.45);
+      box-shadow: 0 0 30px rgba(184,134,11,0.2), inset 0 0 20px rgba(255,255,255,0.3);
+    }
+    .mock-perfume::after {
+      content: '';
+      position: absolute; top: calc(50% - 84px); left: 50%;
+      transform: translateX(-50%);
+      width: 28px; height: 18px;
+      background: rgba(184,134,11,0.55);
+      border-radius: 14px;
+    }
+    .mock-perfume .bottle-shine {
+      position: absolute; top: 50%; left: calc(50% + 8px);
+      transform: translateY(-54%) translateX(-50%);
+      width: 6px; height: 90px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.45), transparent);
+      border-radius: 3px;
+      pointer-events: none;
+    }
+
+    .mock-watch {
+      background: linear-gradient(155deg, #DDD4C0 0%, #D0C4A8 60%, #C4B890 100%);
+      position: relative; overflow: hidden;
+    }
+    .mock-watch .dial {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 132px; height: 132px;
+      border-radius: 50%;
+      border: 2px solid rgba(122,85,0,0.55);
+      box-shadow: 0 0 40px rgba(184,134,11,0.2), inset 0 0 40px rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.2);
+    }
+    .mock-watch .center-dot {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(122,85,0,0.9);
+      box-shadow: 0 0 10px rgba(122,85,0,0.5);
+    }
+    .mock-watch .marker {
+      position: absolute;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: rgba(122,85,0,0.65);
+    }
+    .mock-watch .hand-h {
+      position: absolute; top: 50%; left: 50%;
+      width: 2px; height: 38px;
+      transform-origin: bottom center;
+      transform: translateX(-50%) rotate(-30deg) translateY(-100%);
+      background: linear-gradient(to top, rgba(122,85,0,0.95), rgba(122,85,0,0.3));
+      border-radius: 1px;
+    }
+    .mock-watch .hand-m {
+      position: absolute; top: 50%; left: 50%;
+      width: 1.5px; height: 50px;
+      transform-origin: bottom center;
+      transform: translateX(-50%) rotate(80deg) translateY(-100%);
+      background: linear-gradient(to top, rgba(184,134,11,0.95), rgba(184,134,11,0.2));
+      border-radius: 1px;
+    }
+
+    .mock-bag {
+      background: linear-gradient(155deg, #D8C898 0%, #CCBA80 60%, #C0AD6A 100%);
+      position: relative; overflow: hidden;
+    }
+    .mock-bag .body {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -45%);
+      width: 130px; height: 100px;
+      background: linear-gradient(145deg, rgba(122,85,0,0.25), rgba(80,55,10,0.18));
+      border: 1px solid rgba(122,85,0,0.38);
+      border-radius: 3px 3px 6px 6px;
+      box-shadow: inset 0 0 20px rgba(255,255,255,0.2);
+    }
+    .mock-bag .handle {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -170%);
+      width: 70px; height: 28px;
+      border-top: 2px solid rgba(122,85,0,0.5);
+      border-left: 2px solid rgba(122,85,0,0.5);
+      border-right: 2px solid rgba(122,85,0,0.5);
+      border-radius: 20px 20px 0 0;
+    }
+    .mock-bag .clasp {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -35%);
+      width: 20px; height: 20px;
+      border: 1.5px solid rgba(122,85,0,0.7);
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+    }
+    .mock-bag .shadow {
+      position: absolute; bottom: 18%; left: 50%;
+      transform: translateX(-50%);
+      width: 110px; height: 6px;
+      background: linear-gradient(90deg, transparent, rgba(122,85,0,0.18), transparent);
+      border-radius: 50%;
+      filter: blur(4px);
+    }
+
+    /* ── Noise overlay ───────────────────────────────────── */
+    .noise-overlay {
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 9999;
+      opacity: 0.018;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* ── Scrollbar ───────────────────────────────────────── */
+    ::-webkit-scrollbar       { width: 3px; }
+    ::-webkit-scrollbar-track { background: #EDE7DC; }
+    ::-webkit-scrollbar-thumb { background: #C4A870; border-radius: 2px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+    /* ── Reduced motion ──────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- ══════════════════════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════════════════ -->
+  <nav id="navbar"
+       class="fixed top-4 left-4 right-4 z-50 glass rounded-2xl transition-all duration-500"
+       role="navigation" aria-label="Main navigation">
+    <div class="flex items-center justify-between px-6 py-4">
+
+      <a href="#" class="flex items-center gap-3 cursor-pointer group" aria-label="Maison Lumière — Home">
+        <svg class="w-8 h-8 transition-transform duration-400 group-hover:rotate-12 flex-shrink-0"
+             viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <polygon points="16,2 30,28 2,28" stroke="#B8860B" stroke-width="1.5" fill="none"/>
+          <circle cx="16" cy="20" r="4" stroke="#B8860B" stroke-width="1"
+                  fill="rgba(184,134,11,0.12)"/>
+        </svg>
+        <span class="font-serif text-base tracking-[0.22em] text-charcoal leading-none">MAISON</span>
+        <span class="w-px h-4 flex-shrink-0" style="background:rgba(122,85,0,0.35)"></span>
+        <span class="font-serif text-base tracking-[0.22em] leading-none" style="color:#7A5500;">LUMIÈRE</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8" role="menubar">
+        <a href="#collection" role="menuitem"
+           class="font-sans text-[10px] tracking-[0.22em] uppercase transition-colors duration-200 cursor-pointer hover:text-gold-text"
+           style="color:rgba(28,25,23,0.55)">Collection</a>
+        <a href="#story" role="menuitem"
+           class="font-sans text-[10px] tracking-[0.22em] uppercase transition-colors duration-200 cursor-pointer hover:text-gold-text"
+           style="color:rgba(28,25,23,0.55)">Atelier</a>
+        <a href="#values" role="menuitem"
+           class="font-sans text-[10px] tracking-[0.22em] uppercase transition-colors duration-200 cursor-pointer hover:text-gold-text"
+           style="color:rgba(28,25,23,0.55)">Savoir-Faire</a>
+        <a href="#membership" role="menuitem"
+           class="font-sans text-[10px] tracking-[0.22em] uppercase transition-colors duration-200 cursor-pointer hover:text-gold-text"
+           style="color:rgba(28,25,23,0.55)">Membership</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button class="hidden md:flex items-center justify-center w-9 h-9 transition-colors duration-200 cursor-pointer hover:text-gold-text"
+                style="color:rgba(28,25,23,0.5)" aria-label="Search">
+          <svg class="w-[15px] h-[15px]" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+        </button>
+        <button class="hidden md:flex items-center justify-center w-9 h-9 transition-colors duration-200 cursor-pointer hover:text-gold-text"
+                style="color:rgba(28,25,23,0.5)" aria-label="Account">
+          <svg class="w-[15px] h-[15px]" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </button>
+        <button class="relative flex items-center justify-center w-9 h-9 transition-colors duration-200 cursor-pointer hover:text-gold-text"
+                style="color:rgba(28,25,23,0.5)" aria-label="Shopping bag, 3 items">
+          <svg class="w-[15px] h-[15px]" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span class="absolute -top-0.5 -right-0.5 w-4 h-4 bg-gold text-white font-sans
+                       text-[9px] font-semibold rounded-full flex items-center justify-center"
+                style="color:#1C1917" aria-hidden="true">3</span>
+        </button>
+        <button class="md:hidden flex items-center justify-center w-9 h-9 transition-colors duration-200 cursor-pointer"
+                style="color:rgba(28,25,23,0.5)" aria-label="Open menu" aria-expanded="false">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <line x1="4" y1="6" x2="20" y2="6"/>
+            <line x1="4" y1="12" x2="20" y2="12"/>
+            <line x1="4" y1="18" x2="20" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ══════════════════════════════════════════════════════
+         HERO
+    ══════════════════════════════════════════════════════ -->
+    <section id="hero"
+             class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
+             aria-labelledby="hero-heading">
+
+      <div class="absolute inset-0" aria-hidden="true">
+        <div class="absolute inset-0"
+             style="background: linear-gradient(160deg, #EDE4D3 0%, #F8F4EE 45%, #EEE6D6 100%)"></div>
+
+        <!-- Animated orbs -->
+        <div class="orb orb-gold w-[600px] h-[600px] -top-40 -right-40"
+             style="animation: orbFloat1 22s ease-in-out infinite;"></div>
+        <div class="orb orb-warm w-[500px] h-[500px] -bottom-44 -left-20"
+             style="animation: orbFloat2 29s ease-in-out infinite;"></div>
+        <div class="orb orb-sand w-[700px] h-[700px] top-1/2 left-1/2"
+             style="transform:translate(-50%,-50%); animation: orbFloat3 21s ease-in-out infinite;"></div>
+
+        <!-- Rotating conic ring -->
+        <div class="absolute top-1/2 left-1/2 w-[800px] h-[800px]"
+             style="animation: rotateSlow 40s linear infinite;
+                    background: conic-gradient(from 0deg, transparent 0deg,
+                      rgba(184,134,11,0.06) 60deg, transparent 120deg,
+                      rgba(184,134,11,0.03) 180deg, transparent 240deg,
+                      rgba(184,134,11,0.06) 300deg, transparent 360deg);
+                    transform: translate(-50%,-50%);
+                    border-radius: 50%;"></div>
+
+        <!-- Subtle vignette (edges only) -->
+        <div class="absolute inset-0"
+             style="background: radial-gradient(ellipse 80% 80% at 50% 50%, transparent 50%, rgba(232,222,208,0.4) 100%)"></div>
+
+        <!-- Decorative rules -->
+        <div class="absolute left-0 right-0 top-[38%] h-px"
+             style="background: linear-gradient(90deg,transparent,rgba(122,85,0,0.1),transparent)"></div>
+        <div class="absolute left-0 right-0 bottom-[32%] h-px"
+             style="background: linear-gradient(90deg,transparent,rgba(122,85,0,0.06),transparent)"></div>
+      </div>
+
+      <!-- Hero content -->
+      <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
+
+        <!-- Eyebrow -->
+        <div class="flex items-center justify-center gap-4 mb-10">
+          <div class="h-px w-14" style="background: linear-gradient(90deg,transparent,rgba(122,85,0,0.5))"></div>
+          <span class="font-sans text-[10px] tracking-[0.45em] uppercase"
+                style="color:rgba(122,85,0,0.7)">Est. MMXIV &nbsp;·&nbsp; Paris</span>
+          <div class="h-px w-14" style="background: linear-gradient(90deg,rgba(122,85,0,0.5),transparent)"></div>
+        </div>
+
+        <!-- Heading -->
+        <h1 id="hero-heading"
+            class="font-serif font-light leading-[1.08] mb-8"
+            style="font-size: clamp(3.4rem, 10vw, 8.5rem); color:#1C1917;">
+          Crafted for<br>
+          <em class="shimmer-text" style="-webkit-text-fill-color: transparent;">the Exceptional</em>
+        </h1>
+
+        <!-- Sub -->
+        <p class="font-sans font-light tracking-widest mb-14 mx-auto max-w-lg"
+           style="color:rgba(28,25,23,0.55); font-size: clamp(0.8rem,1.8vw,0.95rem); line-height: 1.9; letter-spacing: 0.12em;">
+          Objects of desire, born from the union<br class="hidden md:block">
+          of ancestral craft and contemporary vision.
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#collection"
+             class="group flex items-center gap-3 px-9 py-4 bg-gold hover:bg-gold-dim
+                    font-sans text-[10px] tracking-[0.28em] uppercase
+                    transition-all duration-300 cursor-pointer"
+             style="color:#1C1917;">
+            Discover the Collection
+            <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="#membership"
+             class="flex items-center gap-2.5 px-9 py-4 glass-gold
+                    font-sans text-[10px] tracking-[0.28em] uppercase
+                    transition-all duration-300 cursor-pointer"
+             style="color:#1C1917;">
+            <svg class="w-3.5 h-3.5" style="color:#7A5500" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+            Request Membership
+          </a>
+        </div>
+
+        <!-- Scroll cue -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+             style="opacity:0.4" aria-hidden="true">
+          <span class="font-sans text-[9px] tracking-[0.4em] uppercase"
+                style="color:rgba(28,25,23,0.6)">Scroll</span>
+          <div class="w-px h-10"
+               style="background: linear-gradient(to bottom,rgba(28,25,23,0.4),transparent)"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         MARQUEE STRIP
+    ══════════════════════════════════════════════════════ -->
+    <div class="marquee-wrap py-5" style="border-top:1px solid rgba(28,25,23,0.08); border-bottom:1px solid rgba(28,25,23,0.08);"
+         aria-label="Press mentions and brand pillars">
+      <div class="marquee-track">
+        <div class="flex items-center">
+          <span class="px-10 font-serif italic text-sm tracking-widest whitespace-nowrap" style="color:rgba(122,85,0,0.6)">Vogue Paris</span>
+          <span class="w-1 h-1 rounded-full mx-4 flex-shrink-0" style="background:rgba(122,85,0,0.22)"></span>
+          <span class="px-10 font-sans text-[10px] tracking-[0.32em] uppercase whitespace-nowrap" style="color:rgba(28,25,23,0.3)">Bespoke Excellence</span>
+          <span class="w-1 h-1 rounded-full mx-4 flex-shrink-0" style="background:rgba(122,85,0,0.22)"></span>
+          <span class="px-10 font-serif italic text-sm tracking-widest whitespace-nowrap" style="color:rgba(122,85,0,0.6)">Financial Times</span>
+          <span class="w-1 h-1 rounded-full mx-4 flex-shrink-0" style="background:rgba(122,85,0,0.22)"></span>
+          <span class="px-10 font-sans text-[10px] tracking-[0.32em] uppercase whitespace-nowrap" style="color:rgba(28,25,23,0.3)">Crafted in France</span>
+          <span class="w-1 h-1 rounded-full mx-4 flex-shrink-0" style="background:rgba(122,85,0,0.22)"></span>
+          <span class="px-10 font-serif italic text-sm tracking-widest whitespace-nowrap" style="color:rgba(122,85,0,0.6)">Harper's Bazaar</span>
+          <span class="w-1 h-1 rounded-full mx-4 flex-shrink-0" style="background:rgba(122,85,0,0.22)"></span>
+          <span class="px-10 font-sans text-[10px] tracking-[0.32em] uppercase whitespace-nowrap" style="color:rgba(28,25,23,0.3)">Rare Materials Only</span>
+          <span class="w-1 h-1 rounded-full mx-4 flex-shrink-0" style="background:rgba(122,85,0,0.22)"></span>
+          <span class="px-10 font-serif italic text-sm tracking-widest whitespace-nowrap" style="color:rgba(122,85,0,0.6)">The World of Interiors</span>
+          <span class="w-1 h-1 rounded-full mx-4 flex-shrink-0" style="background:rgba(122,85,0,0.22)"></span>
+          <span class="px-10 font-sans text-[10px] tracking-[0.32em] uppercase whitespace-nowrap" style="color:rgba(28,25,23,0.3)">Est. MMXIV</span>
+          <span class="w-1 h-1 rounded-full mx-4 flex-shrink-0" style="background:rgba(122,85,0,0.22)"></span>
+        </div>
+        <div class="flex items-center" aria-hidden="true">
+          <span class="px-10 font-serif italic text-sm tracking-widest whitespace-nowrap" style="color:rgba(122,85,0,0.6)">Vogue Paris</span>
+          <span class="w-1 h-1 rounded-full mx-4 flex-shrink-0" style="background:rgba(122,85,0,0.22)"></span>
+          <span class="px-10 font-sans text-[10px] tracking-[0.32em] uppercase whitespace-nowrap" style="color:rgba(28,25,23,0.3)">Bespoke Excellence</span>
+          <span class="w-1 h-1 rounded-full mx-4 flex-shrink-0" style="background:rgba(122,85,0,0.22)"></span>
+          <span class="px-10 font-serif italic text-sm tracking-widest whitespace-nowrap" style="color:rgba(122,85,0,0.6)">Financial Times</span>
+          <span class="w-1 h-1 rounded-full mx-4 flex-shrink-0" style="background:rgba(122,85,0,0.22)"></span>
+          <span class="px-10 font-sans text-[10px] tracking-[0.32em] uppercase whitespace-nowrap" style="color:rgba(28,25,23,0.3)">Crafted in France</span>
+          <span class="w-1 h-1 rounded-full mx-4 flex-shrink-0" style="background:rgba(122,85,0,0.22)"></span>
+          <span class="px-10 font-serif italic text-sm tracking-widest whitespace-nowrap" style="color:rgba(122,85,0,0.6)">Harper's Bazaar</span>
+          <span class="w-1 h-1 rounded-full mx-4 flex-shrink-0" style="background:rgba(122,85,0,0.22)"></span>
+          <span class="px-10 font-sans text-[10px] tracking-[0.32em] uppercase whitespace-nowrap" style="color:rgba(28,25,23,0.3)">Rare Materials Only</span>
+          <span class="w-1 h-1 rounded-full mx-4 flex-shrink-0" style="background:rgba(122,85,0,0.22)"></span>
+          <span class="px-10 font-serif italic text-sm tracking-widest whitespace-nowrap" style="color:rgba(122,85,0,0.6)">The World of Interiors</span>
+          <span class="w-1 h-1 rounded-full mx-4 flex-shrink-0" style="background:rgba(122,85,0,0.22)"></span>
+          <span class="px-10 font-sans text-[10px] tracking-[0.32em] uppercase whitespace-nowrap" style="color:rgba(28,25,23,0.3)">Est. MMXIV</span>
+          <span class="w-1 h-1 rounded-full mx-4 flex-shrink-0" style="background:rgba(122,85,0,0.22)"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         COLLECTION SHOWCASE
+    ══════════════════════════════════════════════════════ -->
+    <section id="collection" class="section-pad relative" aria-labelledby="collection-heading">
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="mb-16 reveal">
+          <span class="font-sans text-[10px] tracking-[0.42em] uppercase block mb-4"
+                style="color:rgba(122,85,0,0.65)">SS 2025 — Capsule Édition</span>
+          <div class="flex items-end justify-between flex-wrap gap-4">
+            <h2 id="collection-heading"
+                class="font-serif font-light text-charcoal"
+                style="font-size: clamp(2.4rem,6vw,4.5rem); line-height:1.1;">
+              The New<br><em>Collection</em>
+            </h2>
+            <a href="#"
+               class="hidden md:flex items-center gap-2 font-sans text-[10px] tracking-[0.22em]
+                      uppercase transition-colors duration-200 cursor-pointer group"
+               style="color:rgba(122,85,0,0.65)">
+              View All
+              <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+          <div class="gold-line mt-5 max-w-xs"></div>
+        </div>
+
+        <!-- Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+          <!-- ── Perfume ── -->
+          <article class="product-card reveal" aria-labelledby="prod-1-name">
+            <div class="glass rounded-2xl overflow-hidden cursor-pointer group"
+                 style="border-color:rgba(122,85,0,0.14);">
+              <div class="mock-perfume h-72 relative" role="img" aria-label="Noir Absolu perfume bottle">
+                <div class="bottle-shine"></div>
+                <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400"
+                     style="background:linear-gradient(to top,rgba(28,25,23,0.1),transparent)"></div>
+                <div class="absolute top-4 left-4">
+                  <span class="glass font-sans text-[9px] tracking-[0.3em] uppercase px-3 py-1.5 rounded-full"
+                        style="color:rgba(122,85,0,0.85)">New Arrival</span>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-start justify-between mb-2">
+                  <div>
+                    <span class="block font-sans text-[9px] tracking-[0.42em] uppercase mb-1"
+                          style="color:rgba(122,85,0,0.55)">Parfum de Nuit</span>
+                    <h3 id="prod-1-name" class="font-serif text-charcoal text-xl font-light">Noir Absolu</h3>
+                  </div>
+                  <span class="font-sans text-sm tracking-wide" style="color:rgba(28,25,23,0.5)">€485</span>
+                </div>
+                <p class="font-sans text-xs leading-relaxed mb-5" style="color:rgba(28,25,23,0.45)">
+                  Oud, black amber &amp; crystallised iris. A portrait of darkness, refined.
+                </p>
+                <div class="flex items-center justify-between">
+                  <button class="font-sans text-[9px] tracking-[0.3em] uppercase cursor-pointer
+                                 border-b pb-0.5 transition-colors duration-200"
+                          style="color:rgba(122,85,0,0.65); border-color:rgba(122,85,0,0.3)">
+                    Add to Bag
+                  </button>
+                  <button class="w-8 h-8 flex items-center justify-center glass rounded-full
+                                 transition-all duration-200 cursor-pointer"
+                          aria-label="Save Noir Absolu to wishlist">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none"
+                         stroke="rgba(28,25,23,0.4)" stroke-width="1.5" aria-hidden="true">
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- ── Watch (featured / raised) ── -->
+          <article class="product-card reveal md:-mt-7" style="transition-delay:100ms;"
+                   aria-labelledby="prod-2-name">
+            <div class="glass-gold rounded-2xl overflow-hidden cursor-pointer group relative">
+              <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 z-10">
+                <span class="glass-gold font-sans text-[9px] tracking-[0.3em] uppercase
+                             px-4 py-1.5 rounded-full"
+                      style="color:rgba(122,85,0,0.85); border:1px solid rgba(122,85,0,0.25)">
+                  Featured Piece
+                </span>
+              </div>
+              <div class="mock-watch h-80 relative" role="img" aria-label="Chronos I watch">
+                <div class="dial"></div>
+                <div class="center-dot"></div>
+                <div class="hand-h"></div>
+                <div class="hand-m"></div>
+                <div class="marker" style="top:calc(50% - 68px);left:calc(50% - 2.5px)"></div>
+                <div class="marker" style="top:calc(50% - 2.5px);left:calc(50% + 65px)"></div>
+                <div class="marker" style="top:calc(50% + 63px);left:calc(50% - 2.5px)"></div>
+                <div class="marker" style="top:calc(50% - 2.5px);left:calc(50% - 68px)"></div>
+                <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400"
+                     style="background:linear-gradient(to top,rgba(28,25,23,0.08),transparent)"></div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-start justify-between mb-2">
+                  <div>
+                    <span class="block font-sans text-[9px] tracking-[0.42em] uppercase mb-1"
+                          style="color:rgba(122,85,0,0.55)">Haute Horlogerie</span>
+                    <h3 id="prod-2-name" class="font-serif text-charcoal text-xl font-light">Chronos I</h3>
+                  </div>
+                  <span class="font-sans text-sm tracking-wide" style="color:rgba(28,25,23,0.5)">€12,400</span>
+                </div>
+                <p class="font-sans text-xs leading-relaxed mb-5" style="color:rgba(28,25,23,0.45)">
+                  Hand-finished movement. 42-hour power reserve. Sapphire caseback.
+                </p>
+                <div class="flex items-center justify-between">
+                  <button class="font-sans text-[9px] tracking-[0.3em] uppercase cursor-pointer
+                                 border-b pb-0.5 transition-colors duration-200"
+                          style="color:#7A5500; border-color:#D4A853">
+                    Discover More
+                  </button>
+                  <button class="w-8 h-8 flex items-center justify-center glass rounded-full
+                                 transition-all duration-200 cursor-pointer"
+                          aria-label="Save Chronos I to wishlist">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none"
+                         stroke="rgba(28,25,23,0.4)" stroke-width="1.5" aria-hidden="true">
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- ── Bag ── -->
+          <article class="product-card reveal" style="transition-delay:200ms;"
+                   aria-labelledby="prod-3-name">
+            <div class="glass rounded-2xl overflow-hidden cursor-pointer group"
+                 style="border-color:rgba(122,85,0,0.14);">
+              <div class="mock-bag h-72 relative" role="img" aria-label="Valise Atelier leather bag">
+                <div class="body"></div>
+                <div class="handle"></div>
+                <div class="clasp"></div>
+                <div class="shadow"></div>
+                <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400"
+                     style="background:linear-gradient(to top,rgba(28,25,23,0.08),transparent)"></div>
+                <div class="absolute top-4 right-4">
+                  <span class="glass font-sans text-[9px] tracking-[0.28em] uppercase px-3 py-1.5 rounded-full"
+                        style="color:rgba(28,25,23,0.5)">Limited — 50 pcs</span>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-start justify-between mb-2">
+                  <div>
+                    <span class="block font-sans text-[9px] tracking-[0.42em] uppercase mb-1"
+                          style="color:rgba(122,85,0,0.55)">Maroquinerie</span>
+                    <h3 id="prod-3-name" class="font-serif text-charcoal text-xl font-light">Valise Atelier</h3>
+                  </div>
+                  <span class="font-sans text-sm tracking-wide" style="color:rgba(28,25,23,0.5)">€3,200</span>
+                </div>
+                <p class="font-sans text-xs leading-relaxed mb-5" style="color:rgba(28,25,23,0.45)">
+                  Full-grain calfskin, hand-stitched. Aged brass hardware. Each piece numbered.
+                </p>
+                <div class="flex items-center justify-between">
+                  <button class="font-sans text-[9px] tracking-[0.3em] uppercase cursor-pointer
+                                 border-b pb-0.5 transition-colors duration-200"
+                          style="color:rgba(122,85,0,0.65); border-color:rgba(122,85,0,0.3)">
+                    Enquire Now
+                  </button>
+                  <button class="w-8 h-8 flex items-center justify-center glass rounded-full
+                                 transition-all duration-200 cursor-pointer"
+                          aria-label="Save Valise Atelier to wishlist">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none"
+                         stroke="rgba(28,25,23,0.4)" stroke-width="1.5" aria-hidden="true">
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         BRAND STORY
+    ══════════════════════════════════════════════════════ -->
+    <section id="story" class="section-pad relative overflow-hidden" aria-labelledby="story-heading">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div class="orb orb-gold w-96 h-96 bottom-0 right-0"
+             style="opacity:0.16; animation: orbFloat2 26s ease-in-out infinite;"></div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+          <!-- Visual -->
+          <div class="reveal order-2 lg:order-1">
+            <div class="relative">
+              <div class="glass rounded-2xl overflow-hidden relative"
+                   style="aspect-ratio:4/5; border-color:rgba(122,85,0,0.14);">
+                <div class="absolute inset-0"
+                     style="background: linear-gradient(145deg,#EAD8B5,#DEC89A,#D2B882)"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <svg class="w-52 h-52" style="opacity:0.14" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+                    <polygon points="50,5 95,82 5,82" stroke="#7A5500" stroke-width="1.2" fill="none"/>
+                    <polygon points="50,18 80,72 20,72" stroke="#7A5500" stroke-width="0.6" fill="none"/>
+                    <circle cx="50" cy="61" r="13" stroke="#7A5500" stroke-width="0.6" fill="none"/>
+                    <line x1="50" y1="5" x2="50" y2="18" stroke="#7A5500" stroke-width="0.6"/>
+                    <line x1="50" y1="48" x2="50" y2="74" stroke="#7A5500" stroke-width="0.4"/>
+                  </svg>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 p-7">
+                  <div class="glass rounded-xl p-5">
+                    <p class="font-serif italic text-sm leading-loose" style="color:rgba(122,85,0,0.8)">
+                      "Every object tells the story<br>of the hands that made it."
+                    </p>
+                    <p class="font-sans text-[9px] tracking-[0.32em] uppercase mt-2.5"
+                       style="color:rgba(28,25,23,0.4)">— Jean-Baptiste Moreau, Founder</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Floating stat -->
+              <div class="absolute -bottom-6 -right-5 glass-gold rounded-xl p-4 min-w-28">
+                <div class="font-serif text-3xl font-light leading-none" style="color:#7A5500">11</div>
+                <div class="font-sans text-[9px] tracking-[0.22em] uppercase mt-1"
+                     style="color:rgba(28,25,23,0.48)">Years of<br>mastery</div>
+              </div>
+
+              <!-- Floating award -->
+              <div class="absolute -top-4 -left-4 glass rounded-xl p-3 flex items-center gap-3">
+                <div class="w-8 h-8 flex items-center justify-center rounded-full flex-shrink-0"
+                     style="background:rgba(212,168,83,0.12); border:1px solid rgba(122,85,0,0.22);">
+                  <svg class="w-4 h-4" style="color:#7A5500" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                    <circle cx="12" cy="8" r="6"/>
+                    <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="font-sans text-[9px] tracking-[0.2em] uppercase" style="color:#7A5500">LVMH Prize</div>
+                  <div class="font-sans text-[8px] tracking-wide" style="color:rgba(28,25,23,0.38)">2021 Finalist</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Text -->
+          <div class="reveal order-1 lg:order-2" style="transition-delay:120ms;">
+            <span class="font-sans text-[10px] tracking-[0.42em] uppercase block mb-6"
+                  style="color:rgba(122,85,0,0.65)">Our Story</span>
+            <h2 id="story-heading"
+                class="font-serif font-light text-charcoal mb-8"
+                style="font-size:clamp(2rem,5vw,3.6rem); line-height:1.15;">
+              Where heritage<br>meets<br>
+              <em style="color:rgba(122,85,0,0.7)">the avant-garde</em>
+            </h2>
+
+            <div class="space-y-5">
+              <p class="font-sans font-light text-sm leading-loose" style="color:rgba(28,25,23,0.58)">
+                Founded in the 12th arrondissement of Paris, Maison Lumière emerged from a singular conviction: that in an age of the mass-produced, the rarest luxury is an object made entirely by one pair of hands.
+              </p>
+              <p class="font-sans font-light text-sm leading-loose" style="color:rgba(28,25,23,0.58)">
+                Each piece moves through the atelier for a minimum of sixty hours before it finds its owner. We work with three family workshops — in Grasse, Florence, and Zurich — whose combined heritage spans four centuries.
+              </p>
+            </div>
+
+            <div class="gold-line my-8 max-w-xs"></div>
+
+            <div class="grid grid-cols-3 gap-6">
+              <div>
+                <div class="font-serif text-2xl text-charcoal font-light">47</div>
+                <div class="font-sans text-[9px] tracking-[0.22em] uppercase mt-1"
+                     style="color:rgba(28,25,23,0.42)">Artisans<br>worldwide</div>
+              </div>
+              <div>
+                <div class="font-serif text-2xl text-charcoal font-light">60+</div>
+                <div class="font-sans text-[9px] tracking-[0.22em] uppercase mt-1"
+                     style="color:rgba(28,25,23,0.42)">Hours per<br>creation</div>
+              </div>
+              <div>
+                <div class="font-serif text-2xl text-charcoal font-light">3</div>
+                <div class="font-sans text-[9px] tracking-[0.22em] uppercase mt-1"
+                     style="color:rgba(28,25,23,0.42)">Legacy<br>workshops</div>
+              </div>
+            </div>
+
+            <a href="#"
+               class="inline-flex items-center gap-3 mt-8 font-sans text-[10px] tracking-[0.25em]
+                      uppercase transition-colors duration-200 cursor-pointer group"
+               style="color:rgba(122,85,0,0.65)">
+              Read the full story
+              <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         CRAFT PROCESS
+    ══════════════════════════════════════════════════════ -->
+    <section class="section-pad" style="border-top:1px solid rgba(28,25,23,0.08); border-bottom:1px solid rgba(28,25,23,0.08);"
+             aria-labelledby="craft-heading">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 reveal">
+          <span class="font-sans text-[10px] tracking-[0.42em] uppercase block mb-4"
+                style="color:rgba(122,85,0,0.65)">The Process</span>
+          <h2 id="craft-heading" class="font-serif font-light text-charcoal"
+              style="font-size:clamp(2rem,5vw,3.5rem);">
+            The Art of <em>Perfection</em>
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+
+          <div class="reveal relative" style="transition-delay:0ms;">
+            <span class="step-num" aria-hidden="true">01</span>
+            <div class="pt-14">
+              <div class="w-11 h-11 glass-gold rounded-full flex items-center justify-center mb-5">
+                <svg class="w-4 h-4" style="color:#7A5500" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <h3 class="font-serif text-charcoal text-lg font-light mb-2">Selection</h3>
+              <p class="font-sans text-xs leading-relaxed" style="color:rgba(28,25,23,0.48)">
+                Raw materials sourced from the world's most exclusive suppliers. Tested. Refined.
+              </p>
+            </div>
+          </div>
+
+          <div class="reveal relative" style="transition-delay:100ms;">
+            <span class="step-num" aria-hidden="true">02</span>
+            <div class="pt-14">
+              <div class="w-11 h-11 glass-gold rounded-full flex items-center justify-center mb-5">
+                <svg class="w-4 h-4" style="color:#7A5500" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                </svg>
+              </div>
+              <h3 class="font-serif text-charcoal text-lg font-light mb-2">Design</h3>
+              <p class="font-sans text-xs leading-relaxed" style="color:rgba(28,25,23,0.48)">
+                Sketched by hand. Each form a dialogue between tradition and contemporary vision.
+              </p>
+            </div>
+          </div>
+
+          <div class="reveal relative" style="transition-delay:200ms;">
+            <span class="step-num" aria-hidden="true">03</span>
+            <div class="pt-14">
+              <div class="w-11 h-11 glass-gold rounded-full flex items-center justify-center mb-5">
+                <svg class="w-4 h-4" style="color:#7A5500" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                </svg>
+              </div>
+              <h3 class="font-serif text-charcoal text-lg font-light mb-2">Creation</h3>
+              <p class="font-sans text-xs leading-relaxed" style="color:rgba(28,25,23,0.48)">
+                60+ hours of meticulous handwork. No shortcuts. No compromises. Ever.
+              </p>
+            </div>
+          </div>
+
+          <div class="reveal relative" style="transition-delay:300ms;">
+            <span class="step-num" aria-hidden="true">04</span>
+            <div class="pt-14">
+              <div class="w-11 h-11 glass-gold rounded-full flex items-center justify-center mb-5">
+                <svg class="w-4 h-4" style="color:#7A5500" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+              <h3 class="font-serif text-charcoal text-lg font-light mb-2">Certification</h3>
+              <p class="font-sans text-xs leading-relaxed" style="color:rgba(28,25,23,0.48)">
+                Every piece certified, numbered, and registered. A certificate of unique provenance.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         BRAND VALUES
+    ══════════════════════════════════════════════════════ -->
+    <section id="values" class="section-pad relative overflow-hidden" aria-labelledby="values-heading">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div class="orb orb-sand w-80 h-80 top-0 left-0"
+             style="opacity:0.14; animation: orbFloat3 22s ease-in-out infinite;"></div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 reveal">
+          <span class="font-sans text-[10px] tracking-[0.42em] uppercase block mb-4"
+                style="color:rgba(122,85,0,0.65)">What We Stand For</span>
+          <h2 id="values-heading" class="font-serif font-light text-charcoal"
+              style="font-size:clamp(2rem,5vw,3.5rem);">
+            Our <em>Pillars</em>
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+          <div class="reveal glass rounded-2xl p-8 cursor-default group
+                      transition-all duration-400"
+               style="transition-delay:0ms; border-color:rgba(122,85,0,0.1);">
+            <div class="w-12 h-12 glass-gold rounded-full flex items-center justify-center mb-6
+                        group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-5 h-5" style="color:#7A5500" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h3 class="font-serif text-charcoal text-xl font-light mb-3">Uncompromising Quality</h3>
+            <p class="font-sans text-xs leading-relaxed" style="color:rgba(28,25,23,0.48)">
+              We reject volume in favour of virtue. Every item produced meets a standard defined not by market expectation, but by the ideal of the object itself.
+            </p>
+          </div>
+
+          <div class="reveal glass-gold rounded-2xl p-8 cursor-default group
+                      transition-all duration-400"
+               style="transition-delay:100ms;">
+            <div class="w-12 h-12 glass-gold rounded-full flex items-center justify-center mb-6
+                        group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-5 h-5" style="color:#7A5500" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <h3 class="font-serif text-charcoal text-xl font-light mb-3">Intimate Relationships</h3>
+            <p class="font-sans text-xs leading-relaxed" style="color:rgba(28,25,23,0.48)">
+              We know our clients by name. Each relationship is personal, discreet, and enduring. Your patronage is a conversation, not a transaction.
+            </p>
+          </div>
+
+          <div class="reveal glass rounded-2xl p-8 cursor-default group
+                      transition-all duration-400"
+               style="transition-delay:200ms; border-color:rgba(122,85,0,0.1);">
+            <div class="w-12 h-12 glass-gold rounded-full flex items-center justify-center mb-6
+                        group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-5 h-5" style="color:#7A5500" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </div>
+            <h3 class="font-serif text-charcoal text-xl font-light mb-3">Timeless Longevity</h3>
+            <p class="font-sans text-xs leading-relaxed" style="color:rgba(28,25,23,0.48)">
+              We design objects intended to outlast trends and decades. A Maison Lumière piece is a companion for a lifetime — and an heirloom for the next.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         TESTIMONIALS
+    ══════════════════════════════════════════════════════ -->
+    <section class="section-pad" style="border-top:1px solid rgba(28,25,23,0.08);"
+             aria-labelledby="testimonials-heading">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-14 reveal">
+          <span class="font-sans text-[10px] tracking-[0.42em] uppercase block mb-4"
+                style="color:rgba(122,85,0,0.65)">Testimonials</span>
+          <h2 id="testimonials-heading" class="font-serif font-light text-charcoal"
+              style="font-size:clamp(2rem,5vw,3rem);">
+            Words from Our <em>Patrons</em>
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+          <blockquote class="reveal glass rounded-2xl p-8"
+                      style="transition-delay:0ms; border-color:rgba(122,85,0,0.1);">
+            <div class="flex gap-1 mb-5" aria-label="5 out of 5 stars">
+              <svg class="w-3 h-3 text-gold" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="w-3 h-3 text-gold" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="w-3 h-3 text-gold" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="w-3 h-3 text-gold" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="w-3 h-3 text-gold" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="font-serif italic text-sm leading-loose mb-6" style="color:rgba(28,25,23,0.68)">
+              "The Chronos I arrived wearing the kind of confidence that only comes from decades of craft. I have not removed it since."
+            </p>
+            <footer class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full glass-gold flex items-center justify-center flex-shrink-0">
+                <span class="font-serif" style="color:#7A5500" aria-hidden="true">A</span>
+              </div>
+              <div>
+                <cite class="font-sans text-[10px] tracking-[0.2em] uppercase not-italic"
+                      style="color:rgba(28,25,23,0.6)">Alexandre R.</cite>
+                <div class="font-sans text-[9px]" style="color:rgba(28,25,23,0.36)">Geneva</div>
+              </div>
+            </footer>
+          </blockquote>
+
+          <blockquote class="reveal glass-gold rounded-2xl p-8"
+                      style="transition-delay:100ms;">
+            <div class="flex gap-1 mb-5" aria-label="5 out of 5 stars">
+              <svg class="w-3 h-3 text-gold" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="w-3 h-3 text-gold" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="w-3 h-3 text-gold" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="w-3 h-3 text-gold" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="w-3 h-3 text-gold" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="font-serif italic text-sm leading-loose mb-6" style="color:rgba(28,25,23,0.68)">
+              "I requested a bespoke Valise for my wife's birthday. The atelier's involvement felt genuinely personal — like commissioning, not purchasing."
+            </p>
+            <footer class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full glass-gold flex items-center justify-center flex-shrink-0">
+                <span class="font-serif" style="color:#7A5500" aria-hidden="true">S</span>
+              </div>
+              <div>
+                <cite class="font-sans text-[10px] tracking-[0.2em] uppercase not-italic"
+                      style="color:rgba(28,25,23,0.6)">Sophia M.</cite>
+                <div class="font-sans text-[9px]" style="color:rgba(28,25,23,0.36)">London</div>
+              </div>
+            </footer>
+          </blockquote>
+
+          <blockquote class="reveal glass rounded-2xl p-8"
+                      style="transition-delay:200ms; border-color:rgba(122,85,0,0.1);">
+            <div class="flex gap-1 mb-5" aria-label="5 out of 5 stars">
+              <svg class="w-3 h-3 text-gold" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="w-3 h-3 text-gold" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="w-3 h-3 text-gold" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="w-3 h-3 text-gold" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="w-3 h-3 text-gold" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="font-serif italic text-sm leading-loose mb-6" style="color:rgba(28,25,23,0.68)">
+              "Noir Absolu stopped the conversation the moment I entered the room. Three months later, I still receive questions about it."
+            </p>
+            <footer class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full glass-gold flex items-center justify-center flex-shrink-0">
+                <span class="font-serif" style="color:#7A5500" aria-hidden="true">L</span>
+              </div>
+              <div>
+                <cite class="font-sans text-[10px] tracking-[0.2em] uppercase not-italic"
+                      style="color:rgba(28,25,23,0.6)">Léa D.</cite>
+                <div class="font-sans text-[9px]" style="color:rgba(28,25,23,0.36)">Paris</div>
+              </div>
+            </footer>
+          </blockquote>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         EXCLUSIVE MEMBERSHIP CTA  — intentionally stays dark
+    ══════════════════════════════════════════════════════ -->
+    <section id="membership" class="section-pad relative overflow-hidden"
+             aria-labelledby="membership-heading">
+
+      <div class="absolute inset-0" aria-hidden="true">
+        <div class="absolute inset-0"
+             style="background: linear-gradient(135deg, #1A1208 0%, #0D0B06 50%, #080706 100%)"></div>
+        <div class="orb" style="background:radial-gradient(circle,#D4A853,#8B6914); opacity:0.14;
+             width:700px; height:700px; top:-192px; right:-192px;
+             animation: orbFloat1 23s ease-in-out infinite;"></div>
+        <div class="orb" style="background:radial-gradient(circle,#D4A853,#8B6914); opacity:0.07;
+             width:500px; height:500px; bottom:-128px; left:-128px;
+             animation: orbFloat2 29s ease-in-out infinite;"></div>
+        <div class="absolute top-0 left-0 right-0 h-px"
+             style="background: linear-gradient(90deg,transparent,rgba(212,168,83,0.35),transparent)"></div>
+        <div class="absolute bottom-0 left-0 right-0 h-px"
+             style="background: linear-gradient(90deg,transparent,rgba(212,168,83,0.15),transparent)"></div>
+      </div>
+
+      <div class="max-w-3xl mx-auto px-6 text-center relative z-10">
+
+        <div class="reveal flex justify-center mb-8">
+          <div class="w-16 h-16 glass-dark rounded-full flex items-center justify-center"
+               style="border: 1px solid rgba(212,168,83,0.3);">
+            <svg class="w-7 h-7 text-gold" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+              <path d="M3 7l4 4 5-8 5 8 4-4v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="reveal" style="transition-delay:100ms;">
+          <span class="font-sans text-[10px] tracking-[0.5em] uppercase block mb-5"
+                style="color:rgba(212,168,83,0.65)">By Invitation Only</span>
+          <h2 id="membership-heading"
+              class="font-serif font-light mb-2"
+              style="color:#FAFAF9; font-size:clamp(2.6rem,7.5vw,5.5rem); line-height:1.08;">
+            The Cercle
+          </h2>
+          <p class="font-serif font-light mb-8"
+             style="font-size:clamp(2.6rem,7.5vw,5.5rem); line-height:1.08;">
+            <em class="shimmer-text" style="-webkit-text-fill-color:transparent;">Lumière</em>
+          </p>
+        </div>
+
+        <div class="reveal" style="transition-delay:200ms;">
+          <div class="membership-card p-8 md:p-10">
+            <p class="font-sans font-light text-sm leading-loose mb-8"
+               style="color:rgba(250,250,249,0.58)">
+              Entry to our private circle grants access to pre-release collections, one-on-one ateliers with our master craftspeople, priority bespoke commissions, and annual invitations to private evenings in Paris and Florence.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-9 text-left">
+              <div class="flex items-start gap-3">
+                <svg class="w-4 h-4 text-gold mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span class="font-sans text-xs leading-relaxed" style="color:rgba(250,250,249,0.48)">Pre-release collection access</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-4 h-4 text-gold mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span class="font-sans text-xs leading-relaxed" style="color:rgba(250,250,249,0.48)">Private atelier appointments</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-4 h-4 text-gold mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span class="font-sans text-xs leading-relaxed" style="color:rgba(250,250,249,0.48)">Priority bespoke commissions</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-4 h-4 text-gold mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span class="font-sans text-xs leading-relaxed" style="color:rgba(250,250,249,0.48)">Annual private soirées</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-4 h-4 text-gold mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span class="font-sans text-xs leading-relaxed" style="color:rgba(250,250,249,0.48)">Dedicated personal liaison</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-4 h-4 text-gold mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span class="font-sans text-xs leading-relaxed" style="color:rgba(250,250,249,0.48)">Numbered member card &amp; archive</span>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
+              <button class="group flex items-center gap-3 px-9 py-4 bg-gold hover:bg-gold-light
+                             font-sans text-[10px] tracking-[0.32em] uppercase
+                             transition-all duration-300 cursor-pointer"
+                      style="color:#1C1917;">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+                Request an Invitation
+              </button>
+              <span class="font-sans text-[10px] tracking-[0.2em] uppercase"
+                    style="color:rgba(250,250,249,0.28)">Membership limited to 500 patrons</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════════ -->
+  <footer class="relative pt-16 pb-8" style="border-top:1px solid rgba(28,25,23,0.09);" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-14">
+
+        <div class="md:col-span-2">
+          <a href="#" class="flex items-center gap-3 mb-5 cursor-pointer w-fit" aria-label="Maison Lumière">
+            <svg class="w-7 h-7 flex-shrink-0" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <polygon points="16,2 30,28 2,28" stroke="#B8860B" stroke-width="1.5" fill="none"/>
+              <circle cx="16" cy="20" r="4" stroke="#B8860B" stroke-width="1"
+                      fill="rgba(184,134,11,0.12)"/>
+            </svg>
+            <span class="font-serif text-sm tracking-[0.22em] text-charcoal">MAISON</span>
+            <span class="font-sans text-xs mx-1.5" style="color:rgba(28,25,23,0.2)">|</span>
+            <span class="font-serif text-sm tracking-[0.22em]" style="color:#7A5500;">LUMIÈRE</span>
+          </a>
+
+          <p class="font-sans font-light text-xs leading-loose max-w-xs mb-7"
+             style="color:rgba(28,25,23,0.42)">
+            Objects of exceptional craft. Born in Paris. Revered worldwide. For the few who understand the language of the truly rare.
+          </p>
+
+          <div>
+            <p class="font-sans text-[10px] tracking-[0.3em] uppercase mb-3"
+               style="color:rgba(122,85,0,0.58)">Private Correspondence</p>
+            <form class="flex gap-2" onsubmit="return false;" aria-label="Newsletter subscription">
+              <label for="footer-email" class="sr-only">Your email address</label>
+              <input id="footer-email" type="email" placeholder="your@address.com"
+                     class="flex-1 min-w-0 px-4 py-2.5 font-sans text-xs outline-none
+                            transition-colors duration-200"
+                     style="background:rgba(255,255,255,0.65);
+                            border:1px solid rgba(28,25,23,0.12);
+                            color:rgba(28,25,23,0.75);"
+                     aria-required="true">
+              <button type="submit"
+                      class="flex-shrink-0 px-4 py-2.5 bg-gold hover:bg-gold-dim
+                             font-sans text-[9px] tracking-[0.25em] uppercase
+                             transition-colors duration-200 cursor-pointer"
+                      style="color:#1C1917;"
+                      aria-label="Subscribe to newsletter">
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <nav aria-label="Collections">
+          <p class="font-sans text-[10px] tracking-[0.35em] uppercase mb-4"
+             style="color:rgba(122,85,0,0.58)">Collections</p>
+          <ul class="space-y-2.5">
+            <li><a href="#" class="font-sans text-xs cursor-pointer transition-colors duration-200 hover:text-gold-text" style="color:rgba(28,25,23,0.45)">Parfumerie</a></li>
+            <li><a href="#" class="font-sans text-xs cursor-pointer transition-colors duration-200 hover:text-gold-text" style="color:rgba(28,25,23,0.45)">Haute Horlogerie</a></li>
+            <li><a href="#" class="font-sans text-xs cursor-pointer transition-colors duration-200 hover:text-gold-text" style="color:rgba(28,25,23,0.45)">Maroquinerie</a></li>
+            <li><a href="#" class="font-sans text-xs cursor-pointer transition-colors duration-200 hover:text-gold-text" style="color:rgba(28,25,23,0.45)">Bijouterie</a></li>
+            <li><a href="#" class="font-sans text-xs cursor-pointer transition-colors duration-200 hover:text-gold-text" style="color:rgba(28,25,23,0.45)">Bespoke</a></li>
+          </ul>
+        </nav>
+
+        <nav aria-label="La Maison">
+          <p class="font-sans text-[10px] tracking-[0.35em] uppercase mb-4"
+             style="color:rgba(122,85,0,0.58)">La Maison</p>
+          <ul class="space-y-2.5">
+            <li><a href="#" class="font-sans text-xs cursor-pointer transition-colors duration-200 hover:text-gold-text" style="color:rgba(28,25,23,0.45)">The Atelier</a></li>
+            <li><a href="#" class="font-sans text-xs cursor-pointer transition-colors duration-200 hover:text-gold-text" style="color:rgba(28,25,23,0.45)">Savoir-Faire</a></li>
+            <li><a href="#" class="font-sans text-xs cursor-pointer transition-colors duration-200 hover:text-gold-text" style="color:rgba(28,25,23,0.45)">Cercle Lumière</a></li>
+            <li><a href="#" class="font-sans text-xs cursor-pointer transition-colors duration-200 hover:text-gold-text" style="color:rgba(28,25,23,0.45)">Private Client</a></li>
+            <li><a href="#" class="font-sans text-xs cursor-pointer transition-colors duration-200 hover:text-gold-text" style="color:rgba(28,25,23,0.45)">Contact</a></li>
+          </ul>
+        </nav>
+
+      </div>
+
+      <div class="gold-line mb-8"></div>
+
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="font-sans text-[10px] tracking-widest" style="color:rgba(28,25,23,0.28)">
+          © MMXXV Maison Lumière. All rights reserved. Paris, France.
+        </p>
+        <div class="flex items-center gap-6">
+          <a href="#" class="font-sans text-[10px] tracking-widest cursor-pointer transition-colors duration-200 hover:text-gold-text" style="color:rgba(28,25,23,0.28)">Privacy</a>
+          <a href="#" class="font-sans text-[10px] tracking-widest cursor-pointer transition-colors duration-200 hover:text-gold-text" style="color:rgba(28,25,23,0.28)">Legal</a>
+          <a href="#" class="font-sans text-[10px] tracking-widest cursor-pointer transition-colors duration-200 hover:text-gold-text" style="color:rgba(28,25,23,0.28)">Cookies</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Navbar deepens to opaque frosted white on scroll
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        nav.style.background = 'rgba(248,244,238,0.92)';
+        nav.style.backdropFilter = 'blur(28px) saturate(160%)';
+        nav.style.webkitBackdropFilter = 'blur(28px) saturate(160%)';
+        nav.style.boxShadow = '0 2px 24px rgba(28,25,23,0.08)';
+      } else {
+        nav.style.background = '';
+        nav.style.backdropFilter = '';
+        nav.style.webkitBackdropFilter = '';
+        nav.style.boxShadow = '';
+      }
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
